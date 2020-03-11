@@ -4,7 +4,6 @@ import shutil
 import logging
 import numpy as np
 def results(name_dir, name_log, name_vtu):
-    # os.chdir("/home/zmaw/u290235/code/src/idealized")
     test = os.listdir(os.curdir)
     for item in test:
         if item.endswith(".mod") or item.endswith(".o"):
@@ -25,8 +24,6 @@ def results(name_dir, name_log, name_vtu):
     os.rename(name_log, name_dir+"/"+name_log)
 
 def run_conf_write(nx, ny, nt, maxreflvls, beta, initial, nof, theta_r, theta_c, exp = None):
-    # os.chdir("/home/zmaw/u290235/code/src/idealized")
-    # os.chdir("/home/yumeng/test/")
     f = open("test.nml", "w+")
     f.write("&grid\n")
     s = " nx = "+str(nx)
@@ -70,7 +67,6 @@ def run_conf_write(nx, ny, nt, maxreflvls, beta, initial, nof, theta_r, theta_c,
     results(name_dir, name_log, name_vtu)
 
 
-# os.chdir("/src/idealized/")
 subprocess.call(["bash", "run.sh"])
 # # solid body rotation beta = 0.
 
@@ -190,9 +186,10 @@ run_conf_write(nx = 72//2, ny = 36//2, nt = 12*20*4,   maxreflvls = 2, beta = "0
 run_conf_write(nx = 72,    ny = 36,    nt = 12*20*16,  maxreflvls = 2, beta = "0.25", initial = "\"moving\"", nof = "12", theta_r = 0.8, theta_c = 0.4)
 run_conf_write(nx = 72*2,  ny = 36*2,  nt = 12*20*64,  maxreflvls = 2, beta = "0.25", initial = "\"moving\"", nof = "12", theta_r = 0.8, theta_c = 0.4)
 
-exec(open("interp/run_script.py").read())
-os.chdir("..")
-exec(open("uniform/run_script.py").read())
-os.chdir("..")
-exec(open("intermediate/run_script.py").read())
+os.chdir("interp")
+exec(open("run_script.py").read())
+os.chdir("../uniform/")
+exec(open("run_script.py").read())
+os.chdir("../intermediate/")
+exec(open("run_script.py").read())
 os.chdir("..")

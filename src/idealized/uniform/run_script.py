@@ -4,7 +4,6 @@ import shutil
 import logging
 import numpy as np
 def results(name_dir, name_log, name_vtu):
-    os.chdir("/home/zmaw/u290235/code/src/idealized/uniform/")
     test = os.listdir(os.curdir)
     for item in test:
         if item.endswith(".mod") or item.endswith(".o"):
@@ -21,12 +20,10 @@ def results(name_dir, name_log, name_vtu):
     if not os.path.isdir(name_dir):
         subprocess.call(["mkdir", name_dir])
     file = 'AMRDUST.nc'
-    shutil.move(os.path.join("/home/zmaw/u290235/code/src/idealized/uniform/",file), os.path.join(name_dir,file))
+    shutil.move(os.path.join(os.getcwd(),file), os.path.join(name_dir,file))
     os.rename(name_log, name_dir+"/"+name_log)
 
 def run_conf_write(nx, ny, nt, maxreflvls, beta, initial, nof, theta_r, theta_c):
-    os.chdir("/home/zmaw/u290235/code/src/idealized/uniform/")
-    # os.chdir("/home/yumeng/test/")
     f = open("test.nml", "w+")
     f.write("&grid\n")
     s = " nx = "+str(nx)
@@ -67,7 +64,6 @@ def run_conf_write(nx, ny, nt, maxreflvls, beta, initial, nof, theta_r, theta_c)
     name_vtu = initial[1:-1]+"_"
     results(name_dir, name_log, name_vtu)
 
-os.chdir("/home/zmaw/u290235/code/src/idealized/uniform/")
 subprocess.call(["bash", "run.sh"])
 ## moving uniform (Low initial condition plus uniform refinement)
 # c1
