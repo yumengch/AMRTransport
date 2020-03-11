@@ -6,7 +6,10 @@ The current version supports the use in Linux environment with bash shells.
 
 # Prerequisite for idealized test
 * Fortran: gfortran version >= 7.0
-* NetCDF4-Fortran Library
+* HDF5
+* SZIP
+* NetCDF4
+* NetCDF4-Fortran
 * Python package: 
   * Pyngl
   * Nio
@@ -17,6 +20,11 @@ The current version supports the use in Linux environment with bash shells.
   * To generate idealized test results and plots, type following commands in the terminal:  
     `git clone https://github.com/yumengch/AMRTransport.git`  
     `cd AMRTransport`  
+    Open the file `run.sh` and edit the LibPath and LibPathReverse to specify the path to the library  
+    e.g.:  
+    Substitute `(Plase type the path to the include directory of your netcf-fortran. e.g.: \/usr\/include)`
+    into
+    `\/usr\/include`   
     `bash run.sh`
   * For the realistic test (to be done):
     1. Obtain the ECHAM6-HAMMOZ
