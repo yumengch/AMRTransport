@@ -26,7 +26,7 @@ The current version supports the use in Linux environment with bash shells.
     into
     `\/usr\/include`   
     `bash run.sh`
-  * For the realistic test (to be done):
+  * For the realistic test (patch and experiment settings to the original model upon request):
     1. Obtain the ECHAM6-HAMMOZ
     2. Patch `src/realistic/src.patch` to the src directory in the ECHAM6-HAMMOZ
     3. Follow instructions to recompile the ECHAM6-HAMMOZ
