@@ -16,7 +16,9 @@ The current version supports the use in Linux environment with bash shells.
 # Running
   * To generate idealized test results and plots, type following commands in the terminal:
     `git clone https://github.com/yumengch/AMRTransport.git`
+
     `cd AMRTransport`
+    
     `bash run.sh`
   * For the realistic test (to be done):
     1. Obtain the ECHAM6-HAMMOZ
