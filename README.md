@@ -18,7 +18,7 @@ The current version supports the use in Linux environment with bash shells.
     `git clone https://github.com/yumengch/AMRTransport.git`
     `cd AMRTransport`
     `bash run.sh`
-  * For the realistic test:
+  * For the realistic test (to be done):
     1. Obtain the ECHAM6-HAMMOZ
     2. Patch `src/realistic/src.patch` to the src directory in the ECHAM6-HAMMOZ
     3. Follow instructions to recompile the ECHAM6-HAMMOZ
@@ -26,4 +26,4 @@ The current version supports the use in Linux environment with bash shells.
     5. corresponding plotting routines are in the `src/realistic/plot`
 
 
-# If you have any question regarding the project, E-mail: yumeng.chen@uni-hamburg.de
+#### If you have any question regarding the project, E-mail: yumeng.chen@uni-hamburg.de
