@@ -1,0 +1,16 @@
+&grid
+ nx = 144,
+ ny = 72,
+ nt = 15360,
+MaxRef = 2,
+nLimit = 2,
+theta_r = -1,
+theta_c = -1,
+/
+&output
+nof = 12, 
+/
+&test
+ beta = 0.25,
+TestName = "moving",
+/

@@ -1,0 +1,16 @@
+&grid
+ nx = 36,
+ ny = 18,
+ nt = 84,
+MaxRef = 1,
+nLimit = 1,
+theta_r = 1e-06,
+theta_c = 1e-05,
+/
+&output
+nof = 12, 
+/
+&test
+ beta = 0.,
+TestName = "solid",
+/
