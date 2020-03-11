@@ -1,7 +1,7 @@
 # AMRTransport
 Adaptive Mesh Refinement (AMR) for Single Tracer Transport Component
-The project includes flux-form semi-Lagrangian scheme for passive tracer transport using adaptive mesh refinement.
-This repository includes codes both for idealized tests and ploting and a patch for the ECHAM6-HAMMOZ.
+The project includes flux-form semi-Lagrangian scheme for passive tracer transport using adaptive mesh refinement.  
+This repository includes codes both for idealized tests and ploting and a patch for the ECHAM6-HAMMOZ.  
 The current version supports the use in Linux environment with bash shells.
 
 # Prerequisite for idealized test
@@ -14,11 +14,9 @@ The current version supports the use in Linux environment with bash shells.
   * Matplotlib.pyplot
 
 # Running
-  * To generate idealized test results and plots, type following commands in the terminal:
-    `git clone https://github.com/yumengch/AMRTransport.git`
-
-    `cd AMRTransport`
-    
+  * To generate idealized test results and plots, type following commands in the terminal:  
+    `git clone https://github.com/yumengch/AMRTransport.git`  
+    `cd AMRTransport`  
     `bash run.sh`
   * For the realistic test (to be done):
     1. Obtain the ECHAM6-HAMMOZ
