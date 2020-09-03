@@ -13,7 +13,7 @@ def getdof(filename, nt):
         # print(string)
         if len(string) >= 2:
             if string[0] == 'nColumns':
-                val.append(int(string[-1]))
+                val.append(int(string[2]))
             elif string[1] == 'time':
                 error[int(string[2]), 0] = float(string[5])
                 error[int(string[2]), 1] = float(string[8]) 

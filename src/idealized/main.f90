@@ -9,6 +9,9 @@ use class_netcdf,    only: netcdf_init, netcdf_writevar
 implicit none
 type(mesh) :: m(2)
 integer    :: it
+real(dp)    :: start_scheme, end_scheme
+real(dp)    :: start_refine, end_refine
+real(dp)    :: scheme_time, refine_time
 call read_var()
 m(1) = mesh(nx, ny, nz, dt, beta, trim(adjustl(TestName)))
 m(2) = mesh(nx, ny, nz, dt, beta, trim(adjustl(TestName)))
@@ -25,11 +28,29 @@ call netcdf_init(nx, ny, nz, ntracer, MaxRef)
 call netcdf_writevar(m(2)%columns_, 0, dt, nz, ntracer)
 print *, 'nColumns', 0, m(2)%columns_%n_
 do it = 1, nt
+  refine_time = 0.
+  scheme_time = 0.
+  call cpu_time(start_refine)
   call mesh_refine(m, nx, ny, nz, it, ntracer, MaxRef, theta_r, theta_c, dt, beta, trim(adjustl(TestName)), nLimit)
+  call cpu_time(end_refine)
+  refine_time = refine_time + (start_refine - end_refine)
+
+  call cpu_time(start_scheme)
   call FFSL(m, nx, ny, nz, ntracer, MaxRef, dt)
+  call cpu_time(end_scheme)
+  scheme_time = scheme_time + (start_scheme - end_scheme)
+
+  call cpu_time(start_refine)
   call mesh_sync(m(1), nz, it, dt, beta)
+  call cpu_time(end_refine)
+  refine_time = refine_time + (start_refine - end_refine)
+
+  call cpu_time(start_scheme)
   call update(m)
-  print *, 'nColumns', it, m(2)%columns_%n_
+  call cpu_time(end_scheme)
+  scheme_time = scheme_time + (start_scheme - end_scheme)
+
+  print *, 'nColumns', it, m(2)%columns_%n_, refine_time, scheme_time
   call norms(m(1)%columns_, trim(adjustl(TestName)), it, beta, dt)
   if (mod(it, nt/nof) == 0) &
   call netcdf_writevar(m(2)%columns_, it, dt, nz, ntracer)
